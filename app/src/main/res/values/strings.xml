@@ -15,4 +15,6 @@
     <string name="cancel_button_text">Cancel</string>
     <string name="save_button_text">Save</string>
     <string name="create_button_text">Create</string>
+
+    <string name="empty_message">No To Do\'s found</string>
 </resources>

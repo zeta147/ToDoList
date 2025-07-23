@@ -1,10 +1,13 @@
 package com.example.todolist;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,9 +19,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listViewToDoList;
+    private TextView _textViewEmptyMessage;
+    private ProgressBar _progressBar;
     private ArrayList<ToDo> toDoList;
     private DatabaseHelper databaseHelper;
     private Context context;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         listViewToDoList = findViewById(R.id.listViewToDoList);
+        _textViewEmptyMessage = findViewById(R.id.textViewEmptyMessage);
+        _progressBar = findViewById(R.id.progressBar);
         context = this;
     }
 
@@ -44,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
         Thread thread = new Thread(new getToDoListTask());
         thread.start();
         while (thread.isAlive()){}
+        _progressBar.setVisibility(View.INVISIBLE);
+        if(toDoList.isEmpty()){
+            _textViewEmptyMessage.setVisibility(View.VISIBLE);
+        }
+        else{
+            _textViewEmptyMessage.setVisibility(View.INVISIBLE);
+        }
         ToDoAdapter toDoAdapter = new ToDoAdapter(context, toDoList);
         listViewToDoList.setAdapter(toDoAdapter);
         listViewToDoList.setOnItemClickListener((parent, view, position, id) -> {

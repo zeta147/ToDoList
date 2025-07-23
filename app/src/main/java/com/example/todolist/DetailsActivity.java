@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,7 +62,7 @@ public class DetailsActivity extends AppCompatActivity {
         _toDo = new ToDo(_id, _name, _date, _duration, _description);
         getButtonWidgets();
         _buttonSave.setVisibility(View.INVISIBLE);
-        _buttonDelete.setVisibility(View.INVISIBLE);
+        _buttonCancel.setVisibility(View.INVISIBLE);
     }
 
     private void getWidget(){
