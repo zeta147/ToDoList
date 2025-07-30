@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     private Context context;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

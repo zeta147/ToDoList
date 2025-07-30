@@ -101,19 +101,9 @@ public class CreateActivity extends AppCompatActivity {
     private boolean checkValidDate() {
         _calendar = Calendar.getInstance();
         int currentYear = _calendar.get(Calendar.YEAR);
-        int currentMonth = _calendar.get(Calendar.MONTH);
-        int currentDay = _calendar.get(Calendar.DAY_OF_MONTH);
 
         if (_datePickerDate.getYear() < currentYear) {
             setErrorMessageVisible(_textViewDateErrorMessage, "Please select a future year");
-            return false;
-        }
-        if(_datePickerDate.getMonth() < currentMonth){
-            setErrorMessageVisible(_textViewDateErrorMessage, "Please select a future month");
-            return false;
-        }
-        if(_datePickerDate.getDayOfMonth() < currentDay){
-            setErrorMessageVisible(_textViewDateErrorMessage, "Please select a future day");
             return false;
         }
         _date = _datePickerDate.getYear() + "-" + _datePickerDate.getMonth() + "-" + _datePickerDate.getDayOfMonth();
